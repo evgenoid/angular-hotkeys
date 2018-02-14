@@ -436,12 +436,13 @@
        * delete and unbind a Hotkey
        *
        * @param  {mixed} hotkey   Either the bound key or an instance of Hotkey
+       * @param  {string} action  Key action (keyup, keydown)
        * @return {boolean}        true if successful
        */
-      function _del (hotkey) {
+      function _del (hotkey, action) {
         var combo = (hotkey instanceof Hotkey) ? hotkey.combo : hotkey;
 
-        Mousetrap.unbind(combo);
+        Mousetrap.unbind(combo, action);
 
         if (angular.isArray(combo)) {
           var retStatus = true;
